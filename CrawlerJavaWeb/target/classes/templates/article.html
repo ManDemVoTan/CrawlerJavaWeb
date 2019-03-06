@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="art:${articles}">
+
+    <div th:if="${art.detailUrl}!=null">
+        <div th:if="${art.mainImageUrl}!=null">
+            <a th:href="${art.mainImageUrl}">
+                <h4 th:text="${art.title}"></h4>
+                <img th:src="${art.mainImageUrl}" alt="main">
+            </a>
+        </div>
+
+        <div th:if="${art.mainImageUrl}==null">
+                <h4 th:text="${art.title}"></h4>
+                <img th:src="${art.mainImageUrl}" alt="main">
+        </div>
+    </div>
+
+    <h6 th:text="${art.content}"></h6>
+    <hr>
+
+    <span th:if="${prePage}!=null">
+        <a th:href="@{'/'+${prePage}}">Truoc</a>
+    </span>
+    <a th:href="@{'/'+${NextPage}}">sau</a>
+
+
+
+</div>
+</body>
+</html>
